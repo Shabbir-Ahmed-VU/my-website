@@ -1,0 +1,723 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Lab / Portfolio</title>
+  <meta name="description" content="Lab/portfolio site with projects, publications, and contact." />
+  <style>
+    :root{
+      --bg:#0b0c10; --card:#11131a; --muted:#9aa3b2; --text:#eef2ff;
+      --border:rgba(255,255,255,.08); --accent:#a3e635; --accent2:#60a5fa;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(900px 500px at 20% -10%, rgba(96,165,250,.25), transparent 60%),
+                  radial-gradient(900px 500px at 90% 10%, rgba(163,230,53,.18), transparent 60%),
+                  var(--bg);
+      color:var(--text);
+    }
+    a{color:inherit; text-decoration:none}
+    .container{max-width:1100px; margin:0 auto; padding:20px}
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(14px);
+      background: rgba(11,12,16,.55);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      padding:14px 0;
+    }
+    .brand{display:flex; align-items:center; gap:12px}
+    .logo{
+      width:38px; height:38px; border-radius:14px;
+      background: linear-gradient(135deg, rgba(96,165,250,.95), rgba(163,230,53,.9));
+      box-shadow: var(--shadow);
+    }
+    .brand h1{font-size:14px; margin:0; letter-spacing:.2px}
+    .brand p{font-size:12px; margin:2px 0 0; color:var(--muted)}
+    .links{display:flex; flex-wrap:wrap; gap:6px; align-items:center}
+    .pill{
+      padding:9px 12px; border-radius:999px; border:1px solid var(--border);
+      color:rgba(238,242,255,.92);
+      font-weight:600; font-size:13px;
+      background: rgba(255,255,255,.03);
+      transition: transform .12s ease, background .12s ease;
+      cursor:pointer;
+    }
+    .pill:hover{transform: translateY(-1px); background: rgba(255,255,255,.06)}
+    .pill.active{background: rgba(163,230,53,.14); border-color: rgba(163,230,53,.35)}
+    .btn{
+      padding:10px 14px; border-radius:14px;
+      border:1px solid rgba(96,165,250,.35);
+      background: rgba(96,165,250,.15);
+      font-weight:800; font-size:13px;
+    }
+    .btn:hover{background: rgba(96,165,250,.22)}
+    .grid{display:grid; gap:16px}
+    .hero{padding:28px 0 12px}
+    .hero h2{font-size:40px; line-height:1.05; margin:0; letter-spacing:-.5px}
+    .hero p{margin:12px 0 0; color:rgba(154,163,178,.95); max-width:68ch; line-height:1.6}
+    .cards{grid-template-columns: repeat(12, 1fr)}
+    .card{
+      border:1px solid var(--border);
+      background: rgba(17,19,26,.7);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:16px;
+    }
+    .span-7{grid-column: span 7}
+    .span-5{grid-column: span 5}
+    .span-4{grid-column: span 4}
+    .span-6{grid-column: span 6}
+    .muted{color:var(--muted)}
+    .kpi{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
+    .kpi .chip{
+      border:1px solid var(--border);
+      border-radius:999px;
+      padding:7px 10px;
+      background: rgba(255,255,255,.03);
+      font-size:12px;
+      color: rgba(238,242,255,.88);
+    }
+    .sectionTitle{display:flex; align-items:flex-end; justify-content:space-between; gap:10px}
+    .sectionTitle h3{margin:0; font-size:18px}
+    .sectionTitle small{color:var(--muted)}
+    .list{display:grid; gap:10px; margin-top:12px}
+    .item{
+      border:1px solid var(--border);
+      border-radius: 16px;
+      padding:12px;
+      background: rgba(255,255,255,.03);
+    }
+    .item h4{margin:0; font-size:14px}
+    .item p{margin:6px 0 0; color: rgba(154,163,178,.95); line-height:1.55; font-size:13px}
+    .tags{display:flex; gap:6px; flex-wrap:wrap; margin-top:10px}
+    .tag{font-size:12px; padding:6px 9px; border-radius:999px; border:1px solid var(--border); color: rgba(238,242,255,.85)}
+    .search{
+      display:flex; gap:10px; align-items:center; margin-top:10px;
+      border:1px solid var(--border); border-radius: 16px;
+      background: rgba(255,255,255,.03); padding:10px 12px;
+    }
+    .search input{
+      width:100%; border:0; outline:0; background:transparent;
+      color:var(--text); font-size:13px;
+    }
+    .row{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
+    .link{color:rgba(96,165,250,.95); font-weight:800}
+    footer{margin:28px 0 18px; color:var(--muted); font-size:12px}
+    .twoCol{grid-template-columns: repeat(12, 1fr)}
+    .hide{display:none}
+    @media (max-width: 900px){
+      .span-7,.span-5,.span-4,.span-6{grid-column: 1 / -1}
+      .hero h2{font-size:34px}
+      .links{display:none}
+      .mobileLinks{display:flex; flex-wrap:wrap; gap:6px; margin-top:12px}
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container">
+      <div class="nav">
+        <div class="brand">
+          <div class="logo" aria-hidden="true"></div>
+          <div>
+            <h1 id="brandName">Your Lab / Portfolio</h1>
+            <p id="brandTagline">Research • Teaching • Collaboration</p>
+          </div>
+        </div>
+
+        <div class="links" id="navLinks"></div>
+
+        <a class="btn" id="emailBtn" href="mailto:you@university.edu">Email</a>
+      </div>
+
+      <div class="mobileLinks" id="navLinksMobile"></div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="hero">
+      <h2 id="heroTitle">A clean, fast academic website.</h2>
+      <p id="heroBlurb">
+        Update projects, publications, and contact info in one place. This site runs as a single file on GitHub Pages—no installs, no build steps.
+      </p>
+      <div class="kpi" id="kpi"></div>
+    </div>
+
+    <!-- PAGES -->
+    <div id="page-home" class="grid cards"></div>
+    <div id="page-about" class="grid twoCol hide"></div>
+    <div id="page-research" class="grid twoCol hide"></div>
+    <div id="page-projects" class="grid twoCol hide"></div>
+    <div id="page-publications" class="grid twoCol hide"></div>
+    <div id="page-teaching" class="grid twoCol hide"></div>
+    <div id="page-cv" class="grid twoCol hide"></div>
+    <div id="page-contact" class="grid twoCol hide"></div>
+
+    <footer>
+      © <span id="year"></span> <span id="footerName">Your Lab / Portfolio</span> • Hosted on GitHub Pages
+    </footer>
+  </div>
+
+  <script>
+    // ======== EDIT THIS CONTENT ONLY ========
+    const SITE = {
+      name: "Your Lab / Portfolio",
+      tagline: "Research • Teaching • Collaboration",
+      heroTitle: "A clean, fast academic website.",
+      heroBlurb: "Update projects, publications, and contact info in one place. This site runs as a single file on GitHub Pages—no installs, no build steps.",
+      email: "you@university.edu",
+      location: "Nashville, TN",
+      links: {
+        googleScholar: "https://scholar.google.com",
+        orcid: "https://orcid.org",
+        github: "https://github.com",
+        cvPdf: "#"
+      },
+      chips: ["RNA-seq", "Proteomics", "Imaging", "Infection biology"],
+      about: [
+        "Write a clear, human intro: who you are, what you study, and why it matters.",
+        "Add your position, institution, advisor/lab, and your approach (methods + philosophy)."
+      ],
+      researchAreas: [
+        { title: "Area 1: Immune–Physiology Integration", text: "1–2 sentences describing your central research question and approach." },
+        { title: "Area 2: Extracellular Matrix & Remodeling", text: "Explain why ECM matters for your system and what you measure." },
+        { title: "Area 3: Signaling Pathways", text: "JAK/STAT, IMD/JNK, etc. What you test and why." }
+      ],
+      projects: [
+        {
+          title: "Project Title 1",
+          period: "2025–present",
+          tags: ["Proteomics", "Mosquito", "Infection"],
+          summary: "2–3 sentences: the question, the approach, and what you found/aim to find.",
+          bullets: [
+            "Dataset generated (LC–MS/MS, RNA-seq, imaging).",
+            "Key result or hypothesis.",
+            "Why it matters."
+          ],
+          links: [{ label: "Preprint", href: "#" }, { label: "Code", href: "#" }]
+        },
+        {
+          title: "Project Title 2",
+          period: "2024–2025",
+          tags: ["Transcriptomics", "ECM"],
+          summary: "Short description of your second project.",
+          bullets: ["Key method.", "Key result.", "Next step."],
+          links: [{ label: "Poster", href: "#" }]
+        }
+      ],
+      publications: [
+        { year: 2025, items: [
+          { title: "Paper Title Goes Here", authors: "You, Coauthor, Coauthor", venue: "Journal Name", href: "#", badge: "Peer-reviewed" }
+        ]},
+        { year: 2024, items: [
+          { title: "Another Publication / Preprint", authors: "You, Coauthor", venue: "bioRxiv / Conference", href: "#", badge: "Preprint" }
+        ]}
+      ],
+      teaching: [
+        { title: "Teaching Assistant — Course Name", org: "Department / University", when: "Fall 2025", desc: "What you taught, built, and a measurable outcome if possible." },
+        { title: "Workshop / Guest Lecture", org: "Program", when: "Spring 2025", desc: "Topic, audience, and teaching approach." }
+      ],
+      cv: {
+        education: [
+          { title: "PhD, Field", meta: "University • 20XX–present" },
+          { title: "BSc/MSc, Field", meta: "University • 20XX–20XX" }
+        ],
+        honors: [
+          { title: "Award name", meta: "Year" },
+          { title: "Fellowship name", meta: "Year" }
+        ],
+        skills: [
+          { title: "Wet lab", meta: "Dissections, assays, infection models" },
+          { title: "Omics", meta: "RNA-seq, proteomics, QC" },
+          { title: "Computation", meta: "R, Python, visualization" }
+        ],
+        service: [
+          { title: "Reviewer / editor", meta: "Journal or venue" },
+          { title: "Mentoring", meta: "Program" }
+        ]
+      }
+    };
+
+    // ======== ROUTING (Hash-based) ========
+    const routes = [
+      { id:"home", label:"Home" },
+      { id:"about", label:"About" },
+      { id:"research", label:"Research" },
+      { id:"projects", label:"Projects" },
+      { id:"publications", label:"Publications" },
+      { id:"teaching", label:"Teaching" },
+      { id:"cv", label:"CV" },
+      { id:"contact", label:"Contact" }
+    ];
+
+    function el(tag, attrs={}, children=[]) {
+      const node = document.createElement(tag);
+      Object.entries(attrs).forEach(([k,v])=>{
+        if (k === "class") node.className = v;
+        else if (k.startsWith("on") && typeof v === "function") node.addEventListener(k.slice(2).toLowerCase(), v);
+        else node.setAttribute(k, v);
+      });
+      (Array.isArray(children) ? children : [children]).forEach(ch=>{
+        if (ch === null || ch === undefined) return;
+        if (typeof ch === "string") node.appendChild(document.createTextNode(ch));
+        else node.appendChild(ch);
+      });
+      return node;
+    }
+
+    function setText(id, text){ const n=document.getElementById(id); if(n) n.textContent=text; }
+
+    function navPill(routeId, label) {
+      return el("a", {
+        href: `#/${routeId}`,
+        class: "pill",
+        "data-route": routeId
+      }, label);
+    }
+
+    function renderNav() {
+      const desktop = document.getElementById("navLinks");
+      const mobile = document.getElementById("navLinksMobile");
+      desktop.innerHTML = "";
+      mobile.innerHTML = "";
+      routes.forEach(r=>{
+        desktop.appendChild(navPill(r.id, r.label));
+        mobile.appendChild(navPill(r.id, r.label));
+      });
+    }
+
+    function showPage(routeId) {
+      routes.forEach(r=>{
+        const node = document.getElementById(`page-${r.id}`);
+        if (!node) return;
+        node.classList.toggle("hide", r.id !== routeId);
+      });
+
+      // active nav
+      document.querySelectorAll(".pill").forEach(p=>{
+        p.classList.toggle("active", p.getAttribute("data-route") === routeId);
+      });
+
+      // title
+      const titleMap = {
+        home: SITE.heroTitle,
+        about: "About",
+        research: "Research",
+        projects: "Projects",
+        publications: "Publications",
+        teaching: "Teaching",
+        cv: "CV",
+        contact: "Contact"
+      };
+      document.title = `${titleMap[routeId] || SITE.name} • ${SITE.name}`;
+    }
+
+    function currentRoute() {
+      const hash = location.hash || "#/home";
+      const m = hash.match(/^#\/([^?]+)/);
+      const r = m ? m[1] : "home";
+      return routes.some(x=>x.id===r) ? r : "home";
+    }
+
+    window.addEventListener("hashchange", ()=> showPage(currentRoute()));
+
+    // ======== PAGE RENDERERS ========
+    function card(title, bodyNodes) {
+      return el("div", { class:"card" }, [
+        el("div", { class:"sectionTitle" }, [
+          el("h3", {}, title),
+        ]),
+        ...bodyNodes
+      ]);
+    }
+
+    function projectCard(p) {
+      const linkRow = el("div", { class:"row", style:"margin-top:10px" }, []);
+      (p.links || []).forEach(l=>{
+        linkRow.appendChild(el("a", { class:"pill", href:l.href, target:"_blank", rel:"noreferrer" }, l.label + " ↗"));
+      });
+
+      return el("div", { class:"card" }, [
+        el("div", { class:"sectionTitle" }, [
+          el("h3", {}, p.title),
+          el("small", {}, p.period || "")
+        ]),
+        el("div", { class:"tags" }, (p.tags||[]).map(t=>el("span",{class:"tag"},t))),
+        el("p", { class:"muted", style:"margin:10px 0 0; line-height:1.6" }, p.summary || ""),
+        el("ul", { class:"list", style:"margin-top:10px" }, (p.bullets||[]).map(b =>
+          el("li", { class:"item" }, [el("p", {}, b)])
+        )),
+        linkRow
+      ]);
+    }
+
+    function renderHome() {
+      const root = document.getElementById("page-home");
+      root.innerHTML = "";
+      root.className = "grid cards";
+
+      const left = el("div", { class:"card span-7" }, [
+        el("div", { class:"sectionTitle" }, [
+          el("h3", {}, "Welcome"),
+          el("small", {}, SITE.location)
+        ]),
+        el("p", { class:"muted", style:"line-height:1.7; margin-top:10px" },
+          "Use this template as a clean academic site. Everything is in one file. Edit the SITE object in the code to update content."
+        ),
+        el("div", { class:"kpi" }, [
+          el("a", { class:"pill", href:SITE.links.cvPdf, target:"_blank", rel:"noreferrer" }, "CV ↗"),
+          el("a", { class:"pill", href:SITE.links.googleScholar, target:"_blank", rel:"noreferrer" }, "Google Scholar ↗"),
+          el("a", { class:"pill", href:SITE.links.orcid, target:"_blank", rel:"noreferrer" }, "ORCID ↗"),
+          el("a", { class:"pill", href:SITE.links.github, target:"_blank", rel:"noreferrer" }, "GitHub ↗"),
+        ])
+      ]);
+
+      const right = el("div", { class:"card span-5" }, [
+        el("div", { class:"sectionTitle" }, [
+          el("h3", {}, "Quick info"),
+          el("small", {}, "Contact")
+        ]),
+        el("div", { class:"list" }, [
+          el("div", { class:"item" }, [
+            el("h4", {}, "Email"),
+            el("p", {}, SITE.email)
+          ]),
+          el("div", { class:"item" }, [
+            el("h4", {}, "Location"),
+            el("p", {}, SITE.location)
+          ]),
+          el("div", { class:"item" }, [
+            el("h4", {}, "Focus"),
+            el("p", {}, SITE.chips.join(" • "))
+          ])
+        ])
+      ]);
+
+      const three = el("div", { class:"card span-4" }, [
+        el("div", { class:"sectionTitle" }, [el("h3", {}, "Research")]),
+        el("p", { class:"muted", style:"margin-top:10px; line-height:1.6" },
+          "Summarize your main research themes in 2–3 short areas."
+        ),
+        el("a", { class:"pill", href:"#/research", style:"display:inline-flex; margin-top:10px" }, "View research →")
+      ]);
+
+      const four = el("div", { class:"card span-4" }, [
+        el("div", { class:"sectionTitle" }, [el("h3", {}, "Projects")]),
+        el("p", { class:"muted", style:"margin-top:10px; line-height:1.6" },
+          "Highlight 2–6 projects with clear outcomes and links."
+        ),
+        el("a", { class:"pill", href:"#/projects", style:"display:inline-flex; margin-top:10px" }, "View projects →")
+      ]);
+
+      const five = el("div", { class:"card span-4" }, [
+        el("div", { class:"sectionTitle" }, [el("h3", {}, "Publications")]),
+        el("p", { class:"muted", style:"margin-top:10px; line-height:1.6" },
+          "List papers and preprints by year with one-click access."
+        ),
+        el("a", { class:"pill", href:"#/publications", style:"display:inline-flex; margin-top:10px" }, "View publications →")
+      ]);
+
+      root.appendChild(left);
+      root.appendChild(right);
+      root.appendChild(three);
+      root.appendChild(four);
+      root.appendChild(five);
+    }
+
+    function renderAbout() {
+      const root = document.getElementById("page-about");
+      root.innerHTML = "";
+      root.className = "grid twoCol";
+
+      root.appendChild(el("div", { class:"card span-7" }, [
+        el("div", { class:"sectionTitle" }, [el("h3", {}, "About")]),
+        ...SITE.about.map(p => el("p", { class:"muted", style:"line-height:1.75; margin-top:10px" }, p))
+      ]));
+
+      root.appendChild(el("div", { class:"card span-5" }, [
+        el("div", { class:"sectionTitle" }, [el("h3", {}, "Quick facts")]),
+        el("div", { class:"list" }, [
+          el("div", { class:"item" }, [el("h4", {}, "Email"), el("p", {}, SITE.email)]),
+          el("div", { class:"item" }, [el("h4", {}, "Location"), el("p", {}, SITE.location)]),
+          el("div", { class:"item" }, [el("h4", {}, "Links"), el("p", {}, "Scholar • ORCID • GitHub • CV")]),
+        ])
+      ]));
+    }
+
+    function renderResearch() {
+      const root = document.getElementById("page-research");
+      root.innerHTML = "";
+      root.className = "grid twoCol";
+      root.appendChild(el("div", { class:"card span-7" }, [
+        el("div", { class:"sectionTitle" }, [el("h3", {}, "Research Areas")]),
+        el("div", { class:"list" },
+          SITE.researchAreas.map(a => el("div", { class:"item" }, [
+            el("h4", {}, a.title),
+            el("p", {}, a.text)
+          ]))
+        )
+      ]));
+      root.appendChild(el("div", { class:"card span-5" }, [
+        el("div", { class:"sectionTitle" }, [el("h3", {}, "Collaboration")]),
+        el("p", { class:"muted", style:"line-height:1.7; margin-top:10px" },
+          "Add a sentence about what kinds of collaborations you’re open to."
+        ),
+        el("a", { class:"pill", href:"#/contact", style:"display:inline-flex; margin-top:10px" }, "Contact →")
+      ]));
+    }
+
+    function renderProjects() {
+      const root = document.getElementById("page-projects");
+      root.innerHTML = "";
+      root.className = "grid twoCol";
+
+      const left = el("div", { class:"card span-7" }, [
+        el("div", { class:"sectionTitle" }, [
+          el("h3", {}, "Projects"),
+          el("small", {}, "Search")
+        ]),
+        el("div", { class:"search" }, [
+          el("span", { class:"muted" }, "🔎"),
+          el("input", { id:"projSearch", placeholder:"Type a keyword (e.g., proteomics, RNA-seq, ECM)"} )
+        ]),
+        el("div", { id:"projList", class:"grid", style:"margin-top:12px; gap:12px" })
+      ]);
+
+      const right = el("div", { class:"card span-5" }, [
+        el("div", { class:"sectionTitle" }, [el("h3", {}, "Tips")]),
+        el("div", { class:"list" }, [
+          el("div", { class:"item" }, [el("h4", {}, "Keep it scannable"), el("p", {}, "2–3 sentences + 3 bullets works well.")]),
+          el("div", { class:"item" }, [el("h4", {}, "Link to artifacts"), el("p", {}, "Preprints, posters, datasets, code.")]),
+          el("div", { class:"item" }, [el("h4", {}, "Highlight outcomes"), el("p", {}, "What changed because of this work?")]),
+        ])
+      ]);
+
+      root.appendChild(left);
+      root.appendChild(right);
+
+      const list = document.getElementById("projList");
+      const input = document.getElementById("projSearch");
+
+      function renderList(q="") {
+        const query = (q||"").trim().toLowerCase();
+        list.innerHTML = "";
+        SITE.projects
+          .filter(p => !query || (p.title + " " + p.summary + " " + (p.tags||[]).join(" ")).toLowerCase().includes(query))
+          .forEach(p => list.appendChild(projectCard(p)));
+        if (!list.childNodes.length) {
+          list.appendChild(el("div",{class:"item"},[el("h4",{}, "No matches"), el("p",{}, "Try a different keyword.")]));
+        }
+      }
+
+      renderList("");
+      input.addEventListener("input", e => renderList(e.target.value));
+    }
+
+    function renderPublications() {
+      const root = document.getElementById("page-publications");
+      root.innerHTML = "";
+      root.className = "grid twoCol";
+
+      const left = el("div", { class:"card span-7" }, [
+        el("div", { class:"sectionTitle" }, [el("h3", {}, "Publications")]),
+        ...SITE.publications
+          .slice().sort((a,b)=>b.year-a.year)
+          .map(y => el("div", { style:"margin-top:12px" }, [
+            el("div", { class:"muted", style:"font-weight:900; letter-spacing:.12em; font-size:12px" }, String(y.year)),
+            el("div", { class:"list" },
+              y.items.map(p => el("div", { class:"item" }, [
+                el("h4", {}, p.title),
+                el("p", {}, p.authors),
+                el("p", {}, p.venue),
+                el("div", { class:"row", style:"margin-top:8px" }, [
+                  el("a", { class:"pill", href:p.href, target:"_blank", rel:"noreferrer" }, "Open ↗"),
+                  el("span", { class:"tag" }, p.badge || "Publication")
+                ])
+              ]))
+            )
+          ]))
+      ]);
+
+      const right = el("div", { class:"card span-5" }, [
+        el("div", { class:"sectionTitle" }, [el("h3", {}, "Profiles")]),
+        el("div", { class:"list" }, [
+          el("div", { class:"item" }, [el("h4", {}, "Google Scholar"), el("p", {}, SITE.links.googleScholar), el("a",{class:"link",href:SITE.links.googleScholar,target:"_blank",rel:"noreferrer"},"Open ↗")]),
+          el("div", { class:"item" }, [el("h4", {}, "ORCID"), el("p", {}, SITE.links.orcid), el("a",{class:"link",href:SITE.links.orcid,target:"_blank",rel:"noreferrer"},"Open ↗")]),
+        ])
+      ]);
+
+      root.appendChild(left);
+      root.appendChild(right);
+    }
+
+    function renderTeaching() {
+      const root = document.getElementById("page-teaching");
+      root.innerHTML = "";
+      root.className = "grid twoCol";
+
+      root.appendChild(el("div",{class:"card span-7"},[
+        el("div",{class:"sectionTitle"},[el("h3",{},"Teaching")]),
+        el("div",{class:"list"},
+          SITE.teaching.map(t=>el("div",{class:"item"},[
+            el("h4",{},t.title),
+            el("p",{},`${t.org} • ${t.when}`),
+            el("p",{},t.desc)
+          ]))
+        )
+      ]));
+
+      root.appendChild(el("div",{class:"card span-5"},[
+        el("div",{class:"sectionTitle"},[el("h3",{},"Materials")]),
+        el("p",{class:"muted",style:"line-height:1.7; margin-top:10px"},
+          "Add links to your teaching statement, syllabi, slides, or workshop materials."
+        ),
+        el("div",{class:"kpi"},[
+          el("a",{class:"pill",href:"#",target:"_blank",rel:"noreferrer"},"Teaching statement ↗"),
+          el("a",{class:"pill",href:"#",target:"_blank",rel:"noreferrer"},"Syllabus ↗"),
+        ])
+      ]));
+    }
+
+    function renderCV() {
+      const root = document.getElementById("page-cv");
+      root.innerHTML = "";
+      root.className = "grid twoCol";
+
+      const left = el("div",{class:"card span-7"},[
+        el("div",{class:"sectionTitle"},[el("h3",{},"CV")]),
+        el("p",{class:"muted",style:"line-height:1.7; margin-top:10px"},
+          "If you have a PDF CV, set SITE.links.cvPdf to its URL (you can upload cv.pdf to the repo too)."
+        ),
+        el("div",{class:"kpi"},[
+          el("a",{class:"pill",href:SITE.links.cvPdf,target:"_blank",rel:"noreferrer"},"Open CV PDF ↗")
+        ])
+      ]);
+
+      const right = el("div",{class:"card span-5"},[
+        el("div",{class:"sectionTitle"},[el("h3",{},"Highlights")]),
+        sectionList("Education", SITE.cv.education),
+        sectionList("Honors", SITE.cv.honors),
+        sectionList("Skills", SITE.cv.skills),
+        sectionList("Service", SITE.cv.service)
+      ]);
+
+      root.appendChild(left);
+      root.appendChild(right);
+
+      function sectionList(title, items){
+        return el("div",{style:"margin-top:12px"},[
+          el("div",{class:"muted",style:"font-weight:900; letter-spacing:.12em; font-size:12px"},title.toUpperCase()),
+          el("div",{class:"list"},
+            items.map(it=>el("div",{class:"item"},[
+              el("h4",{},it.title),
+              el("p",{},it.meta)
+            ]))
+          )
+        ]);
+      }
+    }
+
+    function renderContact() {
+      const root = document.getElementById("page-contact");
+      root.innerHTML = "";
+      root.className = "grid twoCol";
+
+      root.appendChild(el("div",{class:"card span-5"},[
+        el("div",{class:"sectionTitle"},[el("h3",{},"Contact")]),
+        el("div",{class:"list"},[
+          el("div",{class:"item"},[el("h4",{},"Email"), el("p",{}, SITE.email), el("a",{class:"link",href:`mailto:${SITE.email}`},"Send email →")]),
+          el("div",{class:"item"},[el("h4",{},"Location"), el("p",{}, SITE.location)]),
+          el("div",{class:"item"},[el("h4",{},"GitHub"), el("p",{}, SITE.links.github), el("a",{class:"link",href:SITE.links.github,target:"_blank",rel:"noreferrer"},"Open ↗")]),
+        ])
+      ]));
+
+      root.appendChild(el("div",{class:"card span-7"},[
+        el("div",{class:"sectionTitle"},[el("h3",{},"Message (opens your email app)")]),
+        el("p",{class:"muted",style:"line-height:1.7; margin-top:10px"},
+          "Fill this and click Send — it will open your email app with a drafted message."
+        ),
+        el("div",{class:"list"},[
+          el("div",{class:"item"},[
+            el("h4",{},"Name"),
+            el("input",{id:"cName",placeholder:"Your name",style:inputStyle()})
+          ]),
+          el("div",{class:"item"},[
+            el("h4",{},"Your email"),
+            el("input",{id:"cEmail",placeholder:"you@domain.com",style:inputStyle()})
+          ]),
+          el("div",{class:"item"},[
+            el("h4",{},"Message"),
+            el("textarea",{id:"cMsg",rows:"6",placeholder:"What would you like to talk about?",style:textareaStyle()})
+          ]),
+        ]),
+        el("div",{class:"row",style:"margin-top:12px"},[
+          el("button",{class:"btn", onclick: sendMail}, "Send via email ↗")
+        ])
+      ]));
+
+      function inputStyle(){
+        return "width:100%; margin-top:8px; padding:10px 12px; border-radius:14px; border:1px solid rgba(255,255,255,.12); background: rgba(0,0,0,.2); color: #eef2ff; outline: none;";
+      }
+      function textareaStyle(){
+        return "width:100%; margin-top:8px; padding:10px 12px; border-radius:14px; border:1px solid rgba(255,255,255,.12); background: rgba(0,0,0,.2); color: #eef2ff; outline: none; resize: vertical;";
+      }
+      function sendMail(){
+        const name = document.getElementById("cName").value || "Website visitor";
+        const from = document.getElementById("cEmail").value || "";
+        const msg  = document.getElementById("cMsg").value || "";
+        const subject = encodeURIComponent(`Website contact from ${name}`);
+        const body = encodeURIComponent(`From: ${name} <${from}>\n\n${msg}`);
+        location.href = `mailto:${SITE.email}?subject=${subject}&body=${body}`;
+      }
+    }
+
+    function renderAll(){
+      renderNav();
+
+      // header text
+      setText("brandName", SITE.name);
+      setText("footerName", SITE.name);
+      setText("brandTagline", SITE.tagline);
+      setText("heroTitle", SITE.heroTitle);
+      setText("heroBlurb", SITE.heroBlurb);
+
+      // email button
+      const emailBtn = document.getElementById("emailBtn");
+      emailBtn.href = `mailto:${SITE.email}`;
+      emailBtn.textContent = "Email";
+
+      // chips
+      const kpi = document.getElementById("kpi");
+      kpi.innerHTML = "";
+      SITE.chips.forEach(c => kpi.appendChild(el("span",{class:"chip"},c)));
+
+      // pages
+      renderHome();
+      renderAbout();
+      renderResearch();
+      renderProjects();
+      renderPublications();
+      renderTeaching();
+      renderCV();
+      renderContact();
+
+      // footer year
+      setText("year", new Date().getFullYear());
+
+      // show current route
+      showPage(currentRoute());
+    }
+
+    // init
+    renderAll();
+  </script>
+</body>
+</html>
