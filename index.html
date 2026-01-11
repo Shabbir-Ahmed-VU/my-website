@@ -169,82 +169,149 @@
   <script>
     // ======== EDIT THIS CONTENT ONLY ========
     const SITE = {
-      name: "Your Lab / Portfolio",
-      tagline: "Research • Teaching • Collaboration",
-      heroTitle: "A clean, fast academic website.",
-      heroBlurb: "Update projects, publications, and contact info in one place. This site runs as a single file on GitHub Pages—no installs, no build steps.",
-      email: "you@university.edu",
-      location: "Nashville, TN",
-      links: {
-        googleScholar: "https://scholar.google.com",
-        orcid: "https://orcid.org",
-        github: "https://github.com",
-        cvPdf: "#"
-      },
-      chips: ["RNA-seq", "Proteomics", "Imaging", "Infection biology"],
-      about: [
-        "Write a clear, human intro: who you are, what you study, and why it matters.",
-        "Add your position, institution, advisor/lab, and your approach (methods + philosophy)."
+  name: "Shabbir Ahmed",
+  tagline: "Mosquito Immunity • Cardiac Physiology • Multi-omics",
+  heroTitle: "Understanding immune–circulatory integration in mosquitoes",
+  heroBlurb:
+    "I study how immune signaling, extracellular matrix remodeling, and cardiac physiology interact during infection in mosquitoes, using transcriptomics, proteomics, and functional assays.",
+  email: "ADD_YOUR_EMAIL_HERE",
+  location: "Nashville, Tennessee, USA",
+
+  links: {
+    googleScholar: "https://scholar.google.com",
+    orcid: "https://orcid.org",
+    github: "https://github.com/Shabbir-Ahmed-VU",
+    cvPdf: "cv.pdf"
+  },
+
+  chips: [
+    "Mosquito immunity",
+    "Heart physiology",
+    "RNA-seq",
+    "Proteomics",
+    "Extracellular matrix",
+    "JAK-STAT signaling"
+  ],
+
+  about: [
+    "I am a PhD researcher in the Department of Biological Sciences at Vanderbilt University, working on mosquito immunity and physiology.",
+    "My research focuses on how immune pathways interact with cardiac tissues and extracellular matrix components to regulate pathogen clearance and systemic immune responses in Anopheles mosquitoes.",
+    "I use multi-omics approaches, including RNA-seq and LC–MS/MS proteomics, combined with functional assays such as hemocyte ablation, infection models, and heart physiology measurements."
+  ],
+
+  researchAreas: [
+    {
+      title: "Immune–circulatory integration",
+      text:
+        "How immune signaling pathways modulate mosquito heart function and coordinate systemic immune responses during bacterial infection."
+    },
+    {
+      title: "Cardiac extracellular matrix remodeling",
+      text:
+        "Identification and functional characterization of ECM components that anchor hemocytes to the heart and regulate cardiac immunity."
+    },
+    {
+      title: "JAK-STAT and stress signaling pathways",
+      text:
+        "Dissecting how JAK-STAT, IMD/JNK, and nitric-oxide signaling shape cardiac physiology, immune activation, and infection tolerance."
+    }
+  ],
+
+  projects: [
+    {
+      title: "Mosquito heart proteomics during bacterial infection",
+      period: "2025–present",
+      tags: ["Proteomics", "Heart", "E. coli infection"],
+      summary:
+        "A quantitative LC–MS/MS analysis of Anopheles gambiae cardiac tissue to identify infection-induced remodeling of immune, metabolic, and extracellular matrix proteins.",
+      bullets: [
+        "Generated heart-specific proteomes from naïve and E. coli-infected mosquitoes",
+        "Identified immune-responsive ECM and signaling proteins enriched in cardiac tissue",
+        "Provides the first infection-resolved cardiac proteome in mosquitoes"
       ],
-      researchAreas: [
-        { title: "Area 1: Immune–Physiology Integration", text: "1–2 sentences describing your central research question and approach." },
-        { title: "Area 2: Extracellular Matrix & Remodeling", text: "Explain why ECM matters for your system and what you measure." },
-        { title: "Area 3: Signaling Pathways", text: "JAK/STAT, IMD/JNK, etc. What you test and why." }
+      links: []
+    },
+    {
+      title: "Heart transcriptome vs whole-body transcriptome comparison",
+      period: "2024–2025",
+      tags: ["RNA-seq", "Cardiac specificity"],
+      summary:
+        "Comparative RNA-seq analysis to define heart-enriched genes and pathways and assess how infection responses differ between cardiac tissue and the whole organism.",
+      bullets: [
+        "Identified heart-specific immune and structural gene signatures",
+        "Revealed discordance between transcript and protein abundance",
+        "Guides functional prioritization of cardiac immune genes"
       ],
-      projects: [
+      links: []
+    },
+    {
+      title: "Extracellular matrix components in Anopheles gambiae",
+      period: "2024–present",
+      tags: ["ECM", "Comparative genomics"],
+      summary:
+        "Systematic identification of ECM and matrisome components in mosquitoes using reciprocal BLAST and domain-based annotation.",
+      bullets: [
+        "Annotated mosquito cardiac matrisome",
+        "Compared ECM composition across insects and vertebrates",
+        "Established evolutionary conservation of immune-supportive ECM proteins"
+      ],
+      links: []
+    }
+  ],
+
+  publications: [
+    {
+      year: 2025,
+      items: [
         {
-          title: "Project Title 1",
-          period: "2025–present",
-          tags: ["Proteomics", "Mosquito", "Infection"],
-          summary: "2–3 sentences: the question, the approach, and what you found/aim to find.",
-          bullets: [
-            "Dataset generated (LC–MS/MS, RNA-seq, imaging).",
-            "Key result or hypothesis.",
-            "Why it matters."
-          ],
-          links: [{ label: "Preprint", href: "#" }, { label: "Code", href: "#" }]
-        },
-        {
-          title: "Project Title 2",
-          period: "2024–2025",
-          tags: ["Transcriptomics", "ECM"],
-          summary: "Short description of your second project.",
-          bullets: ["Key method.", "Key result.", "Next step."],
-          links: [{ label: "Poster", href: "#" }]
+          title: "Manuscript in preparation: Cardiac immune remodeling in mosquitoes",
+          authors: "Ahmed S., et al.",
+          venue: "In preparation",
+          href: "#",
+          badge: "In preparation"
         }
-      ],
-      publications: [
-        { year: 2025, items: [
-          { title: "Paper Title Goes Here", authors: "You, Coauthor, Coauthor", venue: "Journal Name", href: "#", badge: "Peer-reviewed" }
-        ]},
-        { year: 2024, items: [
-          { title: "Another Publication / Preprint", authors: "You, Coauthor", venue: "bioRxiv / Conference", href: "#", badge: "Preprint" }
-        ]}
-      ],
-      teaching: [
-        { title: "Teaching Assistant — Course Name", org: "Department / University", when: "Fall 2025", desc: "What you taught, built, and a measurable outcome if possible." },
-        { title: "Workshop / Guest Lecture", org: "Program", when: "Spring 2025", desc: "Topic, audience, and teaching approach." }
-      ],
-      cv: {
-        education: [
-          { title: "PhD, Field", meta: "University • 20XX–present" },
-          { title: "BSc/MSc, Field", meta: "University • 20XX–20XX" }
-        ],
-        honors: [
-          { title: "Award name", meta: "Year" },
-          { title: "Fellowship name", meta: "Year" }
-        ],
-        skills: [
-          { title: "Wet lab", meta: "Dissections, assays, infection models" },
-          { title: "Omics", meta: "RNA-seq, proteomics, QC" },
-          { title: "Computation", meta: "R, Python, visualization" }
-        ],
-        service: [
-          { title: "Reviewer / editor", meta: "Journal or venue" },
-          { title: "Mentoring", meta: "Program" }
-        ]
-      }
-    };
+      ]
+    }
+  ],
+
+  teaching: [
+    {
+      title: "Teaching Assistant — Introductory Biology Laboratory",
+      org: "Vanderbilt University",
+      when: "2024–2025",
+      desc:
+        "Led undergraduate laboratory sections, mentored students, and assisted with experimental design and data interpretation."
+    },
+    {
+      title: "Instructor — Pre-College Programs",
+      org: "Vanderbilt Programs for Talented Youth",
+      when: "2025–2026",
+      desc:
+        "Designed and taught short courses on insect immunity and physiology for middle-school students."
+    }
+  ],
+
+  cv: {
+    education: [
+      { title: "PhD, Biological Sciences", meta: "Vanderbilt University • Present" },
+      { title: "BSc/MSc, Biology", meta: "Bangladesh" }
+    ],
+    honors: [
+      { title: "Best Poster Award", meta: "Year" },
+      { title: "Travel & Research Grants", meta: "Multiple years" }
+    ],
+    skills: [
+      { title: "Wet lab", meta: "Dissections, infection models, enzymatic assays" },
+      { title: "Omics", meta: "RNA-seq, LC–MS/MS proteomics, QC pipelines" },
+      { title: "Analysis", meta: "R, GraphPad Prism, data visualization" }
+    ],
+    service: [
+      { title: "Academic Editor", meta: "Psyche: A Journal of Entomology" },
+      { title: "Peer Reviewer", meta: "Multiple journals" }
+    ]
+  }
+};
+
 
     // ======== ROUTING (Hash-based) ========
     const routes = [
